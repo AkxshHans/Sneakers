@@ -1,246 +1,193 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Nike Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Silent Café Toronto — Royal Coffee House</title>
+  <meta name="description" content="Silent Café is a royal, premium café in Toronto serving single-origin coffee, artisan pastries, and a tranquil atmosphere. Fully responsive website." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --ink:#2b0500;
+      --bg:#2b0500;
+      --gold:#d28502;
+      --gold-2:#f1b84b;
+      --blue:#293a72;
+      --stone:#f2eee9;
+      --card:rgba(255,255,255,.04);
+      --bdr:rgba(255,255,255,.08);
+      --radius:22px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.6}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1180px,92%);margin:0 auto}
+    header.site{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(43,5,0,.9),rgba(43,5,0,.6) 60%,rgba(43,5,0,0));backdrop-filter:blur(6px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand__mark{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 28% 30%, var(--gold), #8a6a3e 60%, #6e552f 100%);box-shadow:inset 0 2px 6px rgba(255,255,255,.35),0 8px 20px rgba(0,0,0,.35)}
+    .brand__name{font-family:"Playfair Display",serif;font-weight:700;letter-spacing:.3px}
+    .menu{display:flex;gap:14px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;border:1px solid transparent;font-weight:600}
+    .btn--ghost{border-color:rgba(210,133,2,.45)}
+    .btn--gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:var(--ink);box-shadow:var(--shadow)}
+    .hamburger{display:none;flex-direction:column;gap:4px}
+    .hamburger span{width:24px;height:2px;background:#fff;border-radius:1px}
+    .hero{min-height:92svh;display:grid;place-items:center;position:relative;text-align:center;padding-top:64px;background:
+      linear-gradient(180deg,rgba(43,5,0,.5),rgba(43,5,0,.85)),
+      url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat}
+    .hero__inner{max-width:920px;padding:46px 20px}
+    .eyebrow{color:var(--gold-2);letter-spacing:3px;text-transform:uppercase;font-weight:600;font-size:12px}
+    h1.title{font-family:"Playfair Display",serif;font-size:clamp(34px,6vw,70px);line-height:1.06;margin:.4rem 0;color:var(--stone)}
+    .subtitle{color:#e9e2d8;font-size:clamp(16px,2.4vw,20px)}
+    .cta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    section{padding:72px 0}
+    .section-head{text-align:center;margin-bottom:24px}
+    .section-eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:3px;font-weight:600;font-size:12px}
+    .section-title{font-family:"Playfair Display",serif;font-size:clamp(26px,4.6vw,44px);margin-top:6px;color:var(--stone)}
+    .about{background:var(--blue)}
+    .about__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    .highlights{background:radial-gradient(1000px 700px at 80% 90%,var(--blue),var(--ink) 40%,var(--bg) 100%), var(--bg)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .tile{overflow:hidden;border-radius:18px;border:1px solid var(--bdr);background:var(--card);box-shadow:var(--shadow)}
+    .tile__media{height:170px;background:#000 center/cover no-repeat}
+    .tile__body{padding:16px 18px}
+    .price{color:var(--gold);font-weight:700}
+    .gallery{background:var(--ink)}
+    .gallery__strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+    .gallery__img{height:150px;background:#000 center/cover no-repeat;border-radius:14px;border:1px solid var(--bdr)}
+    .contact{background:var(--blue)}
+    .contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#120c09;color:#f1ece4}
+    textarea{min-height:120px;resize:vertical}
+    label{font-size:14px;color:#d9d1c7}
+    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);color:#c9c1b7}
+    .footer__grid{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:24px 0}
+    .footer__links{display:flex;gap:14px}
+    @media (max-width:980px){.about__grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.gallery__strip{grid-template-columns:repeat(3,1fr)}.contact__grid{grid-template-columns:1fr}}
+    @media (max-width:680px){.menu{display:none}.hamburger{display:flex}.grid-3{grid-template-columns:1fr}}
+  </style>
 </head>
-
 <body>
-    <nav id="nav">
-        <div class="navTop">
-            <div class="navItem">
-                <img src="./img/sneakers.png" alt="">
-            </div>
-            <div class="navItem">
-                <div class="search">
-                    <input type="text" placeholder="Search..." class="searchInput">
-                    <img src="./img/search.png" width="20" height="20" alt="" class="searchIcon">
-                </div>
-            </div>
-            <div class="navItem">
-                <span class="limitedOffer">Limited Offer!</span>
-            </div>
-        </div>
-        <div class="navBottom">
-            <h3 class="menuItem">AIR FORCE</h3>
-            <h3 class="menuItem">JORDAN</h3>
-            <h3 class="menuItem">BLAZER</h3>
-            <h3 class="menuItem">CRATER</h3>
-            <h3 class="menuItem">HIPPIE</h3>
-        </div>
-    </nav>
-    <div class="slider">
-        <div class="sliderWrapper">
-            <div class="sliderItem">
-                <img src="air.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">AIR FORCE</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$119</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="jordan.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">AIR JORDAN</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$149</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="blazer.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">BLAZER</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$109</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="crater.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">CRATER</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$129</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-            <div class="sliderItem">
-                <img src="hippie.png" alt="" class="sliderImg">
-                <div class="sliderBg"></div>
-                <h1 class="sliderTitle">HIPPIE</br> NEW</br> SEASON</h1>
-                <h2 class="sliderPrice">$99</h2>
-                <a href="#product">
-                    <button class="buyButton">BUY NOW!</button>
-                </a>
-            </div>
-        </div>
+  <header class="site">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand__mark"></div>
+        <div class="brand__name">Silent Café Toronto</div>
+      </div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn btn--gold">Reserve</button>
     </div>
-   
-    <div class="features">
-        <div class="feature">
-            <img src="shipping.png" alt="" class="featureIcon">
-            <span class="featureTitle">FREE SHIPPING</span>
-            <span class="featureDesc">Free worldwide shipping on all orders.</span>
-        </div>
-        <div class="feature">
-            <img class="featureIcon" src="return.png" alt="">
-            <span class="featureTitle">30 DAYS RETURN</span>
-            <span class="featureDesc">No question return and easy refund in 14 days.</span>
-        </div>
-        <div class="feature">
-            <img class="featureIcon" src="gift.png" alt="">
-            <span class="featureTitle">GIFT CARDS</span>
-            <span class="featureDesc">Buy gift cards and use coupon codes easily.</span>
-        </div>
-        <div class="feature">
-            <img class="featureIcon" src="contact.png" alt="">
-            <span class="featureTitle">CONTACT US!</span>
-            <span class="featureDesc">Keep in touch via email and support system.</span>
-        </div>
-    </div>
+  </header>
 
-    <div class="product" id="product">
-        <img src="air.png" alt="" class="productImg">
-        <div class="productDetails">
-            <h1 class="productTitle">AIR FORCE</h1>
-            <h2 class="productPrice">$199</h2>
-            <p class="productDesc">Lorem ipsum dolor sit amet consectetur impal adipisicing elit. Alias assumenda
-                dolorum
-                doloremque sapiente aliquid aperiam.</p>
-            <div class="colors">
-                <div class="color"></div>
-                <div class="color"></div>
-            </div>
-            <div class="sizes">
-                <div class="size">42</div>
-                <div class="size">43</div>
-                <div class="size">44</div>
-            </div>
-            <button class="productButton">BUY NOW!</button>
-        </div>
-        <div class="payment">
-            <h1 class="payTitle">Personal Information</h1>
-            <label>Name and Surname</label>
-            <input type="text" placeholder="John Doe" class="payInput">
-            <label>Phone Number</label>
-            <input type="text" placeholder="+1 234 5678" class="payInput">
-            <label>Address</label>
-            <input type="text" placeholder="Elton St 21 22-145" class="payInput">
-            <h1 class="payTitle">Card Information</h1>
-            <div class="cardIcons">
-                <img src="visa.png" width="40" alt="" class="cardIcon">
-                <img src="master.png" alt="" width="40" class="cardIcon">
-            </div>
-            <input type="password" class="payInput" placeholder="Card Number">
-            <div class="cardInfo">
-                <input type="text" placeholder="mm" class="payInput sm">
-                <input type="text" placeholder="yyyy" class="payInput sm">
-                <input type="text" placeholder="cvv" class="payInput sm">
-            </div>
-            <button class="payButton">Checkout!</button>
-            <span class="close">X</span>
-        </div>
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="eyebrow">Royal Coffee Experience</div>
+      <h1 class="title">Welcome to Silent Café Toronto</h1>
+      <p class="subtitle">Your serene spot for luxury coffee and artisan pastries in the heart of Toronto.</p>
+      <div class="cta">
+        <a href="#menu" class="btn btn--gold">Explore Menu</a>
+        <a href="#contact" class="btn btn--ghost">Contact Us</a>
+      </div>
     </div>
-    <div class="gallery">
-        <div class="galleryItem">
-            <h1 class="galleryTitle">Be Yourself!</h1>
-            <img src="https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
-        </div>
-        <div class="galleryItem">
-            <img src="https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
-            <h1 class="galleryTitle">This is the First Day of Your New Life</h1>
-        </div>
-        <div class="galleryItem">
-            <h1 class="galleryTitle">Just Do it!</h1>
-            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="galleryImg">
-        </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about__grid">
+      <div>
+        <h2 class="section-title">About Our Café</h2>
+        <p class="card">Located in downtown Toronto, Silent Café offers a premium blend of ambiance and taste. We serve ethically sourced coffee beans, brewed to perfection, paired with freshly baked artisan pastries.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" alt="Cafe interior" style="border-radius:var(--radius)">
     </div>
-    <div class="newSeason">
-        <div class="nsItem">
-            <img src="https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="nsImg">
+  </section>
+
+  <section id="menu" class="highlights">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Highlights</div>
+        <h2 class="section-title">Our Signature Menu</h2>
+      </div>
+      <div class="grid-3">
+        <div class="tile">
+          <div class="tile__media" style="background-image:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop')"></div>
+          <div class="tile__body">
+            <h3>Royal Cappuccino</h3>
+            <p class="price">$5.50</p>
+          </div>
         </div>
-        <div class="nsItem">
-            <h3 class="nsTitleSm">WINTER NEW ARRIVALS</h3>
-            <h1 class="nsTitle">New Season</h1>
-            <h1 class="nsTitle">New Collection</h1>
-            <a href="#nav">
-                <button class="nsButton">CHOOSE YOUR STYLE</button>
-            </a>
+        <div class="tile">
+          <div class="tile__media" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop')"></div>
+          <div class="tile__body">
+            <h3>Golden Latte</h3>
+            <p class="price">$6.00</p>
+          </div>
         </div>
-        <div class="nsItem">
-            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt="" class="nsImg">
+        <div class="tile">
+          <div class="tile__media" style="background-image:url('https://images.unsplash.com/photo-1527168027773-0cc890c4f42e?q=80&w=800&auto=format&fit=crop')"></div>
+          <div class="tile__body">
+            <h3>Artisan Croissant</h3>
+            <p class="price">$3.50</p>
+          </div>
         </div>
+      </div>
     </div>
-    <footer>
-        <div class="footerLeft">
-            <div class="footerMenu">
-                <h1 class="fMenuTitle">About Us</h1>
-                <ul class="fList">
-                    <li class="fListItem">Company</li>
-                    <li class="fListItem">Contact</li>
-                    <li class="fListItem">Careers</li>
-                    <li class="fListItem">Affiliates</li>
-                    <li class="fListItem">Stores</li>
-                </ul>
-            </div>
-            <div class="footerMenu">
-                <h1 class="fMenuTitle">Useful Links</h1>
-                <ul class="fList">
-                    <li class="fListItem">Support</li>
-                    <li class="fListItem">Refund</li>
-                    <li class="fListItem">FAQ</li>
-                    <li class="fListItem">Feedback</li>
-                    <li class="fListItem">Stories</li>
-                </ul>
-            </div>
-            <div class="footerMenu">
-                <h1 class="fMenuTitle">Products</h1>
-                <ul class="fList">
-                    <li class="fListItem">Air Force</li>
-                    <li class="fListItem">Air Jordan</li>
-                    <li class="fListItem">Blazer</li>
-                    <li class="fListItem">Crater</li>
-                    <li class="fListItem">Hippie</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footerRight">
-            <div class="footerRightMenu">
-                <h1 class="fMenuTitle">Subscribe to our newsletter</h1>
-                <div class="fMail">
-                    <input type="text" placeholder="your@email.com" class="fInput">
-                    <button class="fButton">Join!</button>
-                </div>
-            </div>
-            <div class="footerRightMenu">
-                <h1 class="fMenuTitle">Follow Us</h1>
-                <div class="fIcons">
-                    <img src="./img/facebook.png" alt="" class="fIcon">
-                    <img src="./img/twitter.png" alt="" class="fIcon">
-                    <img src="./img/instagram.png" alt="" class="fIcon">
-                    <img src="./img/whatsapp.png" alt="" class="fIcon">
-                </div>
-            </div>
-            <div class="footerRightMenu">
-                <span class="copyright">@Lama Dev. All rights reserved. 2022.</span>
-            </div>
-        </div>
-    </footer>
-    <script src="./app.js"></script>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">Gallery</div>
+        <h2 class="section-title">Inside Silent Café</h2>
+      </div>
+      <div class="gallery__strip">
+        <div class="gallery__img" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="gallery__img" style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="gallery__img" style="background-image:url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="gallery__img" style="background-image:url('https://images.unsplash.com/photo-1472393365320-db77a5abbecc?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="gallery__img" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="gallery__img" style="background-image:url('https://images.unsplash.com/photo-1481391319762-47dff72954d7?q=80&w=800&auto=format&fit=crop')"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container contact__grid">
+      <div>
+        <h2 class="section-title">Contact Us</h2>
+        <form>
+          <label for="name">Name</label>
+          <input id="name" type="text" required>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+          <label for="message">Message</label>
+          <textarea id="message" required></textarea>
+          <button class="btn btn--gold" type="submit" style="margin-top:12px">Send</button>
+        </form>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.2888538724245!2d-79.38393458451641!3d43.6532260791215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d89b3f4e5d%3A0x9a95df8333bd3d8d!2sDowntown%20Toronto!5e0!3m2!1sen!2sca!4v1692158580000" width="100%" height="100%" style="border:0;border-radius:var(--radius);" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer__grid">
+      <div>© 2025 Silent Café Toronto. All rights reserved.</div>
+      <div class="footer__links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
